@@ -15,9 +15,12 @@
  */
 package com.github.tomakehurst.wiremock.http;
 
+import com.github.tomakehurst.wiremock.replacing.PlaceholderHandler;
+
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static com.github.tomakehurst.wiremock.common.LocalNotifier.notifier;
 
 public abstract class AbstractRequestHandler implements RequestHandler, RequestEventSource {
 
@@ -38,6 +41,11 @@ public abstract class AbstractRequestHandler implements RequestHandler, RequestE
 		ResponseDefinition responseDefinition = handleRequest(request);
 		responseDefinition.setOriginalRequest(request);
 		Response response = responseRenderer.render(responseDefinition);
+		//TODO: MPJ ACA PODRÍA ESTAR LA SOLUCION
+
+		notifier().info("MPJ: Linea donde se crea el PlaceHolderHandler");
+		PlaceholderHandler replacer = new PlaceholderHandler(response);
+		response = replacer.handle();
 		for (RequestListener listener: listeners) {
 			listener.requestReceived(request, response);
 		}

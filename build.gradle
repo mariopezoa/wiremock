@@ -181,7 +181,7 @@ uploadArchives {
             	name 'WireMock'
             	description 'A web service test double for all occasions'
             	
-            	url 'https://github.com/tomakehurst/wiremock'
+            	url 'https://github.com/mariopezoa/wiremock'
             	
                 licenses {
                     license {
@@ -192,15 +192,15 @@ uploadArchives {
                 }
                 
                 scm {
-					connection 'https://tomakehurst@github.com/tomakehurst/wiremock.git'
-					developerConnection 'https://tomakehurst@github.com/tomakehurst/wiremock.git'
-					url 'https://tomakehurst@github.com/tomakehurst/wiremock.git'
+					connection 'https://mariopezoa@github.com/mariopezoa/wiremock.git'
+					developerConnection 'https://mariopezoa@github.com/mariopezoa/wiremock.git'
+					url 'https://mariopezoa@github.com/mariopezoa/wiremock.git'
 				}
 				
 				developers {
 					developer {
-						id 'tomakehurst'
-						name 'Tom Akehurst'
+						id 'mariopezoa'
+						name 'Mario Pezoa'
 					}
 				}
             }

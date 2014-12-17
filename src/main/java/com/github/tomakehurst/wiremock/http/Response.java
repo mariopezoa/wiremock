@@ -26,7 +26,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
 public class Response {
 
 	private final int status;
-	private final byte[] body;
+	private byte[] body;
 	private final HttpHeaders headers;
 	private final boolean configured;
 	private final Fault fault;
@@ -83,7 +83,9 @@ public class Response {
     public Fault getFault() {
         return fault;
     }
-
+    public void setBody(String body){
+        this.body = body.getBytes(encodingFromContentTypeHeaderOrUtf8());
+    }
     private Charset encodingFromContentTypeHeaderOrUtf8() {
         ContentTypeHeader contentTypeHeader = headers.getContentTypeHeader();
         if (contentTypeHeader.isPresent() && contentTypeHeader.encodingPart().isPresent()) {

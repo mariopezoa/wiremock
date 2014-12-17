@@ -55,7 +55,6 @@ public class StubResponseRenderer implements ResponseRenderer {
                 .status(responseDefinition.getStatus())
                 .headers(responseDefinition.getHeaders())
                 .fault(responseDefinition.getFault());
-
 		if (responseDefinition.specifiesBodyFile()) {
 			BinaryFile bodyFile = fileSource.getBinaryFileNamed(responseDefinition.getBodyFileName());
             responseBuilder.body(bodyFile.readContents());
@@ -66,6 +65,7 @@ public class StubResponseRenderer implements ResponseRenderer {
                 responseBuilder.body(responseDefinition.getBody());
             }
 		}
+
 
         return responseBuilder.build();
 	}
