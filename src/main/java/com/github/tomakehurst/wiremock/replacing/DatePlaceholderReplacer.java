@@ -17,7 +17,6 @@ public class DatePlaceholderReplacer extends PlaceholderReplacer {
 
     @Override
     public String eval(String[] arguments) {
-        notifier().info("MPJ: eval con ["+arguments.length+"] argumentos");
         String res;
         if(arguments.length!=3) {
             notifier().error("An incorrect number of arguments was passed to DATE function");

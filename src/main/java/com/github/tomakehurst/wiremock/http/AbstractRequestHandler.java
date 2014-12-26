@@ -41,11 +41,11 @@ public abstract class AbstractRequestHandler implements RequestHandler, RequestE
 		ResponseDefinition responseDefinition = handleRequest(request);
 		responseDefinition.setOriginalRequest(request);
 		Response response = responseRenderer.render(responseDefinition);
-		//TODO: MPJ ACA PODRÍA ESTAR LA SOLUCION
-
-		notifier().info("MPJ: Linea donde se crea el PlaceHolderHandler");
-		PlaceholderHandler replacer = new PlaceholderHandler(response);
-		response = replacer.handle();
+		notifier().info("MPJ: "+ response.getBodyAsString());
+		if(response.wasConfigured()) {
+			PlaceholderHandler replacer = new PlaceholderHandler(response);
+			response = replacer.handle();
+		}
 		for (RequestListener listener: listeners) {
 			listener.requestReceived(request, response);
 		}

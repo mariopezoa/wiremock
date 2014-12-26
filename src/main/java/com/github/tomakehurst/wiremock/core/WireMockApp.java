@@ -79,7 +79,7 @@ public class WireMockApp implements StubServer, Admin {
     public ResponseDefinition serveStubFor(Request request) {
         ResponseDefinition responseDefinition = stubMappings.serveFor(request);
         requestJournal.requestReceived(request);
-        if (!responseDefinition.wasConfigured() && request.isBrowserProxyRequest() && browserProxyingEnabled) {
+        if (!responseDefinition.wasConfigured() && browserProxyingEnabled) {
             return ResponseDefinition.browserProxy(request);
         }
 

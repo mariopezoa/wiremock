@@ -41,6 +41,7 @@ public class HttpClientFactory {
                 .disableAutomaticRetries()
                 .disableCookieManagement()
                 .disableRedirectHandling()
+                .disableContentCompression()
                 .setMaxConnTotal(maxConnections)
                 .setDefaultSocketConfig(SocketConfig.custom().setSoTimeout(timeoutMilliseconds).build())
                 .setSslcontext(buildAllowAnythingSSLContext())
